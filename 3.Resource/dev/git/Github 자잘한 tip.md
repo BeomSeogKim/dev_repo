@@ -1,0 +1,3 @@
+- git 관련한 명령어를 쳤을 때 한글 파일 이름이 제대로 나오지 않을 경우
+	- `git config --global core.quotepath false`
+	- 

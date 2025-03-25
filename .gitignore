@@ -1,0 +1,9 @@
+# 모든 파일/폴더 무시
+*
+
+# .gitignore 파일 자체는 Git에 포함
+!.gitignore
+
+# # Resource 폴더만 포함
+!3.Resource/
+!3.Resource/**
