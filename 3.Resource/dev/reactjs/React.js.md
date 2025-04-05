@@ -37,3 +37,6 @@
 ### React Tip
 - Component 
 	- 첫 글자는 대문자로 입력을 해 주어야 한다. (그렇지 않을 경우 React가 컴포넌트로 인식 X)
+
+#### JSX (Javascript Extensions)
+- 확장된 자바스크립트 문법
