@@ -3,26 +3,21 @@
 
 ```
 const Button = ({ children, text, color = "black" }) => {
-return (
-<button
-
-onClick={() => {
-
-console.log(text);
-
-}}
-
-style={{ color: color }}
-
->
-
-{text} - {color.toUpperCase()}
-
-{children}
-
+	return (
+		<button
+			// Event handler
+			onClick={() => {
+				console.log(text);
+			}}
+			style={{ color: color }}
+        >	
 </button>
 
 );
 
 };
 ```
+
+### SyntheticBaseEvent (합성 이벤트)
+- 모든 웹 브라우저의 이벤트 객체를 하나로 통일한 형태
+- CrossBrowsingIssue를 해결 할 수 있음
