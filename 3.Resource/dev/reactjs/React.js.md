@@ -26,5 +26,10 @@
 
 ### React 설치
 - Vite를 활용 
+	- 여러가지 의존성들을 설정해 주기에 많은 리소스가 들음 => vites라는 것을 통해서 기본 환경 설정 
 	- npm create vite@latest
+- public
+	- 정적인 파일들을 보관하는 보관소 
+- src 
+	- source (코드)들을 보관하는 보관소
 - 
