@@ -31,24 +31,32 @@
 	- ES Module (ESM)
 
 #### Common JS
+- module.exports로 내보낼 함수들을 지정한다
+- key : vale 형식으로 지정을 하나. key와 value가 같다면 key 만 사용 
 ```
-function add(a, b) {
+function add(a, b) {return a + b;}
+function sub(a, b) {return a - b;}
+// CJS => module.exports 로 내보낼 function들을 지정 
+module.exports = {add,sub};
 
-return a + b;
+--- 사용하는 곳 
+const { add, sub } = require("");
+```
 
-}
+#### ES Module
+- package.json에 "type": "module" 명시
+- *확장자까지 명시를 해 주어야 한다.*
+- export { } 방식으로 내보낼 수 있음 (여러개 동시에 내보냄)
+- export function ... 방식으로 내보낼 수 있음
+- export default function -> 대표 function 내보낼 때 사용 
+```
+function add(a, b) {return a + b;}
+function sub(a, b) {return a - b;}
 
-function sub(a, b) {
+// ES 
+export { add, sub };
 
-return a - b;
-
-}
-// CJS =>
-module.exports = {
-
-add,
-
-sub,
-
-};
+--- 
+사용하는 곳 
+import { add, sub } from ""
 ```
