@@ -7,4 +7,27 @@
 - 설치 확인 `node -v`
 
 ### NPM (Node Package Manager)
-- node
+- node.js 의 프로젝트 단위인 패키지를 관리하는 Tool
+- 패키지 설치 / 삭제, 라이브러리 관리 등등에 사용됨
+- 설치 확인 `npm -v`
+- npm init : 새로운 패키지를 생성하기위한 command
+![[npm.png]]
+```
+{
+...
+"scripts": {
+
+	"test": "echo \"Error: no test specified\" && exit 1",
+
+	"start": "node src/index.js"
+
+},
+
+"author": "",
+
+"license": "ISC",
+
+"description": ""
+
+}
+```
