@@ -60,3 +60,16 @@ export { add, sub };
 사용하는 곳 
 import { add, sub } from ""
 ```
+
+### Library
+- 필요한 다양한 기능을 미리 만들어 모듈화 해 놓은 것 
+- https://npmjs.com 
+- package.json 에 dependency 항목에 추가됨
+- node_modules에는 설치된 라이브러리들이 존재함
+- npm install : package.json의 dependency 정보를 토대로 필요한 모듈들을 다운로드 해줌
+```
+"dependemcies": {
+	"package": "version"
+}
+
+```
