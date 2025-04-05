@@ -40,3 +40,26 @@
 
 #### JSX (Javascript Extensions)
 - 확장된 자바스크립트 문법
+- html 과 js를 혼용해서 사용할 수 있다.
+- 주의 사항 
+	1. 중괄호( {} ) 내부에는 javascript 표현식만 넣을 수 있음
+		- if, for .. 이런 문법들은 사용 불가
+	2. 숫자, 문자열, 배열 값만 렌더링 된다.
+	3. 모든 태그는 닫혀 있어야 한다. 
+	4. 최상의 태그는 반드시 하나여야만 한다. 
+		- return 문 안에 최상위 태그가 하나 
+		- 만약 마땅한 태그가 없다면 빈 태그 (<> </>)를 입력해준다.
+
+
+```
+function Footer() {
+
+	const name = "kimmy";
+
+	return (
+		<footer>
+			<h1> name is {name}</h1>
+		</footer>
+	)
+}
+```
