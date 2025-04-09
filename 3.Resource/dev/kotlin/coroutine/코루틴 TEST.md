@@ -16,6 +16,27 @@ assertEquals(5000L, testCoroutineScheduler.currentTime)
 ```
 
 #### StandardTestDispatcher
+- dispatcher를 생성한뒤 해당 CoroutineDispatcher를 조절하는 방식
+- advanceUntilIdle을 사용할 경우 가상 시간 스케쥴러를 사용하는 모든 코루틴이 완료될 때 까지 시간이 흐름
+```
+val testCoroutineScheduler = TestCoroutineScheduler()
+val testDispatcher = StandardTestDispatcher(scheduler = testCoroutineScheduler)
+val testCoroutineScope = CoroutineScope(context = testDispatcher)
+
+testCoroutineScope.launch {
+  // ... 
+}
+
+testCoroutineScheduler.advanceTimeBy(5000L)
 ```
 
+#### runTest 
+- runTest 함수로 생성된 코루틴 내부에서 실행된 코루틴의 시간만 흐름
+- 만약 TestScope을 사용하여 새로운 코루틴이 실행된다면, 해당 코루틴은 시간이 자동으로 흐르지 않음
+- 따라서 advanceUntilIdle을 명시적으로 호출
+```
+@Test
+fun `test-2`() = runTest{
+	// ... 
+}
 ```
