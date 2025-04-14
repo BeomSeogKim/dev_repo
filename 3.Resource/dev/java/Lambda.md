@@ -4,6 +4,8 @@
 람다의 기본 표현식
 (매개변수) -> {본문}
 
+람다는 익명함수를 보다 간편하게 작성할 수 있도록 지원한다.
+-> 보일러플레이트 코드를 크게 줄일 수 있음
 ```java
 interface Procedure {
    void run();
@@ -16,7 +18,7 @@ public static void main(String[] args) {
 	Procedure procedure1 = new Procedure() {
 		@Override
 		public void run() {
-			System.out.
+			System.out.println("Hello!");
 		};
 	};
 
@@ -24,4 +26,14 @@ public static void main(String[] args) {
 	Procedure procedure2 = () -> {System.out.println("Hello!");};
 
 }
+```
+
+### 함수형 인터페이스
+> 정확히 하나의 추상 메서드를 가지는 인터페이스
+> 람다는 함수형 인터페이스에만 할당이 가능하다.
+
+함수형 인터페이스는 어노테이션과 함께 명시해준다. 
+
+```java
+
 ```
