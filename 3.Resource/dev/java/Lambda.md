@@ -32,8 +32,15 @@ public static void main(String[] args) {
 > 정확히 하나의 추상 메서드를 가지는 인터페이스
 > 람다는 함수형 인터페이스에만 할당이 가능하다.
 
-함수형 인터페이스는 어노테이션과 함께 명시해준다. 
+함수형 인터페이스는 어노테이션과 함께 명시
 
 ```java
-
+@FunctionalInterface
+public interface SamInterface {
+	void run();
+}
 ```
+
+### 람다와 시그니처
+람다를 함수형 인터페이스에 할당할 때는 메서드 시그니처가 일치해야 한다. 
+- 
