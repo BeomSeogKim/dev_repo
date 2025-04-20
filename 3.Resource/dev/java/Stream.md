@@ -48,3 +48,7 @@
 | skip      | 앞에서 N개의 요소를 건너뛰고 <br>이후 요소만 추출     | stream.skip(5)                                            |
 | takeWhile | 조건을 만족하는 동안 추출                     | stream.takeWile(n -> n < 5)                               |
 | dropWhile | 조건을 만족하는 동안 요소를 버리고 <br>이후 요소부터 추출 | stream.dropWhile( n -> n < 5)                             |
+
+### FlatMap
+- 중첩 컬렉션을 다룰 때 유용한 중간 연산
+- 
