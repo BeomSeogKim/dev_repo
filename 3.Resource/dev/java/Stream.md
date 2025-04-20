@@ -33,4 +33,18 @@
 | 무한 스트림(generate) | Stream.generate(Math::random) | 무한 스트림 생성 (Supplier 사용) |
 
 ### 중간 연산 
-> 스트림 파이프라인에서 데이터를 변환
+> 스트림 파이프라인에서 데이터를 가공하는 단계
+> 주로 변환, 필터링, 정렬등을 한다.
+
+| 연산        | 설명                                 | 예시                                                        |
+| --------- | ---------------------------------- | --------------------------------------------------------- |
+| filter    | 조건에 맞는 요소만 남김                      | stream.filter ( n -> n % 2 == 0)                          |
+| map       | 요소를 다른 형태로 변환                      | stream.map(n -> n * 2)                                    |
+| flatMap   | 중첩 구조 스트림을 일차원으로 평탄화               | stream.flatMap (n -> n.stream())                          |
+| distinct  | 중복 요소 제거                           | stream.distinct()                                         |
+| sorted    | 요소 정렬                              | stream.sorted()<br>stream.sorted(Comparator < ? super T>) |
+| peek      | 중간 처리 (로그, 디버깅)                    | stream.peek(System.out::println)                          |
+| limit     | 앞에서 N개의 요소만 추출                     | stream.limit(5)                                           |
+| skip      | 앞에서 N개의 요소를 건너뛰고 <br>이후 요소만 추출     | stream.skip(5)                                            |
+| takeWhile | 조건을 만족하는 동안 추출                     | stream.takeWile(n -> n < 5)                               |
+| dropWhile | 조건을 만족하는 동안 요소를 버리고 <br>이후 요소부터 추출 | stream.dropWhile( n -> n < 5)                             |
