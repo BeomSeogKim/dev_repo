@@ -57,16 +57,17 @@
 - 스트림 파이프라인의 끝에 호출되어 실제 연산을 수행하고 결과를 만들어냄
 - 최종 연산이 실행된 후 스트림은 소모되어 더 이상 사용이 불가하다.
 
-| 연산        | 설명                                       | 예시                                  |
-| --------- | ---------------------------------------- | ----------------------------------- |
-| collect   | Collector를 사용하여 결과 수집<br>(다양한 형태로 변환 가능) | stream.collect(Collectors.toList()) |
-| toList()  | 스트림을 불변 리스트로 수집                          | stream.toList()                     |
-| toArray() | 스트림을  배열로 변환                             | stream.toArray(Integer[]::new)      |
-| forEach   | 각 요소에 대해 동작 수행<br>(반환값 X)                | stream.forEach(System.out::println) |
-| count     | 요소 개수 반환                                 | long count = stream.count()         |
-| reduce    | 누적 함수를 하                                 |                                     |
-|           |                                          |                                     |
-|           |                                          |                                     |
-|           |                                          |                                     |
-|           |                                          |                                     |
-|           |                                          |                                     |
+| 연산        | 설명                                                       | 예시                                       |
+| --------- | -------------------------------------------------------- | ---------------------------------------- |
+| collect   | Collector를 사용하여 결과 수집<br>(다양한 형태로 변환 가능)                 | stream.collect(Collectors.toList())      |
+| toList()  | 스트림을 불변 리스트로 수집                                          | stream.toList()                          |
+| toArray() | 스트림을  배열로 변환                                             | stream.toArray(Integer[]::new)           |
+| forEach   | 각 요소에 대해 동작 수행<br>(반환값 X)                                | stream.forEach(System.out::println)      |
+| count     | 요소 개수 반환                                                 | long count = stream.count()              |
+| reduce    | 누적 함수를 사용해 <br>모든 요소를 단일 결과로 합침<br>초기값이 없으면 Optional로 반환 | int sum = stream.reduce(0, Integer::sum) |
+| min / max | 최소값, 최대값을 Optional로 반환                                   | -                                        |
+| findFirst | 조건에 맞는 첫 번째 요소 반환 <br>(Optional)                         | stream.findFirst()                       |
+| findAny   | 조건에 맞는 아무 요소반환<br>(Optional)                             | stream.findAny()                         |
+| anyMatch  | 하나라도 조건을 만족하는가? <br>(boolean)                            | stream.anyMatch(n -> n > 5)              |
+| allMatch  | 모두 조건을 만족하는가? <br>(booleabn)                             | stream.allMatch(n -> n > 5)              |
+| noneMatch | 하나도 조건을 만족하지 않는가?                                        | stream.noneMatch(n -> n > 5)             |
