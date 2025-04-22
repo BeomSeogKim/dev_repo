@@ -1,17 +1,17 @@
 스트림의 중간 연산을 거쳐, 최종 연산으로써 데이터 처리 시, 결과물을 나타내기 위해 사용함
 
 #### Collectors의 주요 기능
-| 기능       | 메서드 예시                                | 설명                                                             | 반환 타입     |
-| -------- | ------------------------------------- | -------------------------------------------------------------- | --------- |
-| List로 수집 | toList()<br>toUnmodifiableList()      | 스트림의 요소를 List로 모음<br>toUnmodifiableList() : 불변 리스트             | List< T > |
-| Set으로 수집 | toSet()<br>toCollection(HashSet::new) | 스트림의 요소를 Set으로 모음<br>특정 Set 타입으로 모으려는 경우 <br>toCollection() 사용 | Set< T >  |
-| Map으로 수집 | toMap(keyMapper, valueMapper)         | 스트림 요소를 Map의 형태로 수집<br>중복 키가 생길 경우 mergeFuncion으로 해결하고         |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
-|          |                                       |                                                                |           |
+| 기능       | 메서드 예시                                                                                       | 설명                                                                                        | 반환 타입                                      |
+| -------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------ |
+| List로 수집 | toList()<br>toUnmodifiableList()                                                             | 스트림의 요소를 List로 모음<br>toUnmodifiableList() : 불변 리스트                                        | List< T >                                  |
+| Set으로 수집 | toSet()<br>toCollection(HashSet::new)                                                        | 스트림의 요소를 Set으로 모음<br>특정 Set 타입으로 모으려는 경우 <br>toCollection() 사용                            | Set< T >                                   |
+| Map으로 수집 | toMap(keyMapper, valueMapper)<br>toMap(keyMapper, valueMapper<br>mergeFunction, mapSupplier) | 스트림 요소를 Map의 형태로 수집<br>중복 키가 생길 경우 mergeFuncion<br>으로 해결하고, mapSupplier로 <br>타입을 지정할 수 있음 | Map<br><K, V>                              |
+| 그룹화      | groupingBy(classifier)<br>groupingBy(classifier, <br>downstreamCollector)                    | 특정 기준 함수 (classifier)에 따라 그룹별로 스트림 요소를 묶음<br>각 그룹에 대해 추가로 적용할 다운스트림 컬렉터를 지정할 수 있음         | Map<K, List< T ><br>Map<K,R>               |
+| 분할       | partitioningBy(predicate)<br>partitioningBy(predicate, <br>downstreamCollector)              | predicate 결과가 true, false 두가지로 나뉘어 2개 그룹으로 분할                                             | Map<Boolean, List< T >><br>Map<Boolean, R> |
+|          |                                                                                              |                                                                                           |                                            |
+|          |                                                                                              |                                                                                           |                                            |
+|          |                                                                                              |                                                                                           |                                            |
+|          |                                                                                              |                                                                                           |                                            |
+|          |                                                                                              |                                                                                           |                                            |
+|          |                                                                                              |                                                                                           |                                            |
+|          |                                                                                              |                                                                                           |                                            |
