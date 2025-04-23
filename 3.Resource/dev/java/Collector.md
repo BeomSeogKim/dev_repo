@@ -12,6 +12,7 @@
 | 리듀싱      | reducing(...)                                                                                | Collector 환경에서 요소를 하나로 합치는 연산                                                             | Optional< T >                              |
 | 문자열 연결   | joining(delimeter, prefix, suffix)                                                           | 문자열 스트림을 하나로 합쳐서 연결                                                                       | String                                     |
 | 매핑       | mapping(mapper, downstream)                                                                  | 각 요소를 다른 값으로 변환한 뒤 다운스트림 컬렉터로 넘김                                                          |                                            |
-|          |                                                                                              |                                                                                           |                                            |
-|          |                                                                                              |                                                                                           |                                            |
-|          |                                                                                              |                                                                                           |                                            |
+
+### DownStream Collector
+- Collector의 결과물에서 추가적인 연산을 하고자 하는 작업을 명시하는 것.
+![[DownStreamCollector.png]]
