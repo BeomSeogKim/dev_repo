@@ -58,5 +58,21 @@ public final class Optional<T> {
 ### 즉시 평가 vs 지연 평가
 - 즉시 평가 (Eager evaluation)
 	- 값을 바로 생성하거나 계산해버리는 것
+	- Optional.orElse() 방식이 이에 해당함
 - 지연 평가 (Lazy evaluation)
 	- 값이 실제로 필요할 때까지 계산을 미루는 것
+	- parameter로 Supplier를 받게 되면, 연산이 필요한 시점에 계산을 수행할 수 있다.
+	- Optional.orElseGet() 방식이 이에 해당함
+
+### Best Practice
+1. 반환 타입으로만 사용하고, 필드에는 가급적 쓰지 말 것
+2. 메서드 매개변수로 사용하지 말 것
+3. Collection 혹은 배열 타입을 Optional로 감싸지 말 것
+4. isPresent(), get() 조합을 직접 사용하지 말 것
+5. orElseGet(), orElse 차이를 분명하게 이해 할 것 
+6. Optional이 무조건 은탄환은 아니다.
+	- 다음의 경우에는 Optional 사용이 오히려 독이 될 수 있다
+		- 항상 값이 있는 경우
+		- 값이 없으면 예외를 던지는 것이 더 자연스러운 경우
+		- 값이 흔히 채워져 있는 경우
+		- 성능이 극도로 중요한 low-level code
