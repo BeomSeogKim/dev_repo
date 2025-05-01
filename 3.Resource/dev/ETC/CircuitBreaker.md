@@ -38,3 +38,20 @@ Half Open 상태에서 제한된 시도들이 모두 성공하는 경우 서비�
 	- 서킷 상태 변화 이벤트를 로그/모니터링 하여 서비스 건강 상태를 실시간으로 파악하고 alert을 울릴 수도 있음
 
 ### Hystrix Vs Resilience4J
+**Hystrix**
+- Netflix에서 개발한 Circuit Breaker 라이브러리
+- 2018 이후 유지보수 중단
+- 자체 스레드 풀 격리 방식으로 안정성 확보
+- 설정과 사용이 간단하나 유연성이 부족함
+- Servo 기반 메트릭 시스템
+- Spring Cloud Netflix로 통합 사용
+- Java 6이상 사용 가능
+- Spring 공식 문서에서 비권장
+Resilience4J
+- Hystrix의 대안으로 개발된 모던 라이브러리
+- Java8+ 함수형 스타일 지원
+- 경량형 모듈형 구조 (CircuitBreaker, Retry, RateLimiter)
+- 현재 활발히 유지보수 중
+- 스레드 풀 대신 호출 스레드 내 처리 
+- Micrometer와 자연스럽게 통합 가능
+- Spring 공식 문서에서 권장 
