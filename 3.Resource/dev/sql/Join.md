@@ -37,3 +37,35 @@ ORDER BY
 ```
 
 Cartesian 곱을 생성하는 Join 방식.
+
+# INNER JOIN
+> 외래키와 함께 사용 된다.
+> ON 절 조건이 만족하는 값들만 들고 온다.
+
+```sql
+SELECT 
+	p.id AS post_id
+	p.title AS post_title,
+	pc.review AS review
+FROM
+	post p
+INNER JOIN 
+	post_commnt pc ON pc.post_id = p.id
+ORDER BY
+	pc.id
+```
+
+*theta style*
+
+```sql
+SELECT 
+	p.id AS post_id
+	p.title AS post_title,
+	pc.review AS review
+FROM
+	post p, post_commend pc 
+WHERE 
+	pc.post_id = p.id
+ORDER BY
+	pc.id
+```
