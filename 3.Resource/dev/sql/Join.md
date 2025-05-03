@@ -91,7 +91,46 @@ select * ... 을 했을 때, USING의 경우 동일한 컬럼에 대해 단일 �
 
 ### NATURAL Join
 > 암묵적으로 양쪽 테이블 컬럼 중 같은 이름을 가진 컬럼 값을 ON절 조건으로 사용함.
+> 다만 처음에 없던 컬럼이 나중에 추가되었을 때 동일한 컬럼이 있다면 문제가 발생할 수 있다.
+> (ex version을 추가하는 경우 등..)
 
 ```sql
-SELECT 
+SELECT
+	p.id AS post_id
+	p.title AS post_title,
+	l.language AS post_language
+FROM post p
+NATURAL JOIN localization l 
+ORDER BY p.id
+```
+
+```sql
+SELECT
+	p.id AS post_id
+	p.title AS post_title,
+	l.language AS post_language
+FROM post p
+JOIN localization l on p.locale = l.locale 
+ORDER BY p.id
+```
+
+따라서 파생 table을 NATURAL JOIN을 하는 방식으로 사용할 수 있다.
+
+```sql
+SELECT *
+FROM (
+	SELECT
+		schemaname,
+		tablename,
+		indexname,
+		indexdef
+	FROM pg_indexes
+) i 
+NATURAL JOIN (
+	SELECT 
+		schemaname,
+		tablename,
+		tableowner
+	FROM pg_tables
+)
 ```
