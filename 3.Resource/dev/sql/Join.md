@@ -89,10 +89,11 @@ USING과 ON절을 사용할 때의 차이점
 select * ... 을 했을 때, USING의 경우 동일한 컬럼에 대해 단일 컬럼으로 보여준다. 하지만 ON절을 사용하는 경우 같은 이름의 컬럼이 두개 생긴다. 
 
 
-### NATURAL Join
+### NATURAL JOIN
 > 암묵적으로 양쪽 테이블 컬럼 중 같은 이름을 가진 컬럼 값을 ON절 조건으로 사용함.
 > 다만 처음에 없던 컬럼이 나중에 추가되었을 때 동일한 컬럼이 있다면 문제가 발생할 수 있다.
 > (ex version을 추가하는 경우 등..)
+> 다만 사용성이 떨어지기 때문에 사용을 지양하는 편
 
 ```sql
 SELECT
@@ -132,5 +133,34 @@ NATURAL JOIN (
 		tablename,
 		tableowner
 	FROM pg_tables
+) t 
+where tablename = 'post'
+```
+
+### LEFT JOIN
+> 왼쪽 테이블 중 필터링 기준에 의해 생성된 행을 기준으로 resultset을 생성
+> 오른쪽 테이블에 일치하는 행의 열을 기준으로 결과 집합을 생성하거나 불일치하는 경우 NULL
+
+```sql
+SELECT 
+	p.id AS post_id,
+	p.title AS post_title,
+	pc.review AS review
+FROM post p
+LEFT JOIN post_comment pc ON pc.post_id = p.id
+ORDER BY p.id, pc.id
+```
+
+*equivalent*
+```sql
+SELECT post_id, post_title, review
+FROM (
+
 )
+	p.id AS post_id,
+	p.title AS post_title,
+	pc.review AS review
+FROM post p
+LEFT JOIN post_comment pc ON pc.post_id = p.id
+ORDER BY p.id, pc.id
 ```
