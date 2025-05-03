@@ -155,12 +155,14 @@ ORDER BY p.id, pc.id
 ```sql
 SELECT post_id, post_title, review
 FROM (
-
+	SELECT 
+		p.id AS post_id, p.title AS post_title,
+		pc.review AS review, pc.id AS pc_id
+	FROM post p 
+	INNER JOIN post_comment pc ON pc.post_id = p.id
+	UNION ALL
+	SELECT 
+		id AS post_id, 
 )
-	p.id AS post_id,
-	p.title AS post_title,
-	pc.review AS review
-FROM post p
-LEFT JOIN post_comment pc ON pc.post_id = p.id
 ORDER BY p.id, pc.id
 ```
