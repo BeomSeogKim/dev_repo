@@ -219,4 +219,4 @@ ORDER BY p.id, pc.id
 ```
 
 ### LATERAL JOIN 
->
+> subquery가 외부 쿼리 (from ㅈㅓㄹ)
