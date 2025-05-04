@@ -56,3 +56,42 @@ for (StduentGrade studentGrade : studentGrades) {
 ```
 
 ### Merge Join
+보통은 정렬된 조건의 column들을 사용할 때 사용되는 방식 (MySQL 지원 X)
+Time Complexity : O(nlog(n) + mlog(m))
+
+**Step 1** : 두 테이블을 join 조건에 따라서 정렬을 진행 
+```java
+students.sort(Comparator.comparing(Student::getId));
+
+studentGrades.sort((sg1, sg2) -> {
+	int result = Comparator
+					.comparting(StduentGrade::getStudentId)
+					.compare(sg1, sg2);
+	return result != 0 ? result : 
+		Comparator
+			.comparing(StudentGrade::getId)
+			.compare(sg1, sg2);
+})
+```
+
+**Step 2** : 두 테이블을 돌며 join condition 확인 
+
+```java
+List<Tuple> tuples = new ArrayList<>();
+int studentCount = student.size(), studentGradeCount = studentGrades.size();
+int i = 0, j = 0;
+
+while (i < studentCount && j < studentGradeCount) {
+	Student student = students.get(i);
+	StudentGrade studentGrade = studentGrades.get(j);
+
+	if (student.getId().equals(studentGrade.getStudentId())) {
+		tuples.add(new Tuple()
+						.add("first_name", student.getFirstName())			
+						.add("last_name", student.getLastName())
+						.add("grade", studentGrade.getGrade())
+		)
+	}
+}
+```
+
