@@ -162,7 +162,10 @@ FROM (
 	INNER JOIN post_comment pc ON pc.post_id = p.id
 	UNION ALL
 	SELECT 
-		id AS post_id, 
+		id AS post_id, title as post_title,
+		NULL AS review, NULL AS pc_id
+	FROM post p 
+	WHERE id NOT IN (SELECT post_id FROM post_comment)
 )
 ORDER BY p.id, pc.id
 ```
