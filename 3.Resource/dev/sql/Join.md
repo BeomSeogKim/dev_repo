@@ -219,4 +219,20 @@ ORDER BY p.id, pc.id
 ```
 
 ### LATERAL JOIN 
-> subquery가 외부 쿼리 (from ㅈㅓㄹ)
+> subquery가 외부 쿼리 (from 절)의 행을 교차 참조 할 수 있도록 허용하면서
+> 하위 쿼리와 외부 쿼리 결과 집합을 조인함
+
+```sql
+SELECT 
+	b.id as blog_id,
+	age_in_years,
+	date(created_on + (age_in_years + 1) * interval '1 year') AS next_anniversary,
+	date(created_on + (age_in_years + 1) * interval '1 year') - 
+	date(now()) AS days_to_next_anniversary
+FROM blog b
+CROSS JOIN LATERAL (
+	SELECT
+		cast(extract(YEAR FROM age(now(), b.created_on)) AS int) AS age_in_years
+) AS t
+ORDER BY blog_id
+```
