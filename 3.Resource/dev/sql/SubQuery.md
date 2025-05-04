@@ -36,3 +36,16 @@ ORDER BY s.id
 - EXISTS
 	- outer query에서 student를 순회하면서, 해당 학생이 grade = 10을 갖는지 존재 여부만 확인
 	- EXISTS는 첫 매칭되는 row가 있으면 바로 true, 나머지는 무시됨
+
+### EXISTS & NOT EXISTS
+
+Exists (subquery)
+- subquery가 row를 반환하는 지 여부를 평가
+- predicate
+	- true : row가 반환될 때
+	- false :  row가 반환되지 않을 때
+- subquery는 outer query의 값들을 참조할 수 있다
+- 최소 한개의 row가 return되면 더이상의 탐색을 그만 둠
+
+Not Exists
+- Exists의 반대로 동작
