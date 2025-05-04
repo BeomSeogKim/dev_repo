@@ -187,6 +187,7 @@ ORDER BY p.id, pc.id
 ### FULL JOIN
 > 주어진 JOIN절 조건과 일치하는 지 여부에 관계없이 왼쪽 오른쪽 모두 
 > 현재 SQL 쿼리 필터링 기준에 의해 생성된 행을 기반으로 result set 반환
+> 단 MySQL 8에서는 사용 불가.
 
 ```sql
 SELECT 
@@ -215,3 +216,7 @@ FROM (
 	RIGHT JOIN post_comment pc ON pc.post_id = p.id
 )
 ORDER BY p.id, pc.id
+```
+
+### LATERAL JOIN 
+>
