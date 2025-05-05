@@ -66,4 +66,13 @@ id IN (
 	- false : subquery에 있는 값이 expression과 동일하지 않을 경우
 - ***subquery 혹은 exrepssion이 null일 경우 비교를 하면 false가 아닌 NULL이 반환됨*** 
 
-### 
+### ANY(SOME)
+expression ANY (subquery)
+expression SOME (subquery)
+row_constructor ANY (subquery)
+row_constructor SOME (subquery)
+
+서브쿼리가 반환하는 값드로가 왼쪽 표현식을 비교할 때 사용됨
+Predicate
+- true : subquery 중 expression과 같은 것이 최소 하나라도 있을 때
+- false : subquery가 아무 row도 반환하지 않거나, 하나도 일치하지 않을 경우
