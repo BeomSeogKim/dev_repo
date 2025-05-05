@@ -49,3 +49,19 @@ Exists (subquery)
 
 Not Exists
 - Exists의 반대로 동작
+
+### IN  & NOT IN 
+expression IN (subquery)
+```sql
+id IN (
+	SELECT student_id
+	FROM student_grade
+	GROUP BY student_id
+	HAVING AVG(grade) < 9.5
+)
+```
+- left side의 expression과 in 절의 subquery로 평가됨
+- Predicate
+	- true : subquery에 있는 값이 expression과 동일 할 경우
+	- false : subquery에 있는 값이 expression과 동일하지 않을 경우
+- ***subquery 혹은 exrepssion이 null일 경우 비교를 하면 false가 아닌 NULL이 반환됨*** 
