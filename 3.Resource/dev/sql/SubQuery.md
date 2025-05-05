@@ -76,3 +76,12 @@ row_constructor SOME (subquery)
 Predicate
 - true : subquery 중 expression과 같은 것이 최소 하나라도 있을 때
 - false : subquery가 아무 row도 반환하지 않거나, 하나도 일치하지 않을 경우
+
+### ALL 
+expression ALL (subquery)
+row_constructor ALL (subquery)
+
+subquery와 left side expression이 평가됨
+Predicate
+- true : subquery와 expression의 결과가 동일하거나, subquery가 row를 반환하지 않는 경우
+- false : subquery 중 하나라도 expression과 동일하지 않은 경우 
