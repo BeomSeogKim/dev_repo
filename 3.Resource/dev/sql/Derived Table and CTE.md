@@ -70,3 +70,12 @@ AS (
 SELECT i, consecutive_sum
 FROM consecutive_number_sum
 ```
+
+대댓글이 가능하다고 할 때, 좋아요 순 3순위 안의 댓글들을 들고 오려고 할 때 다음과 같이 짤 수 있음
+```sql
+WITH RECURSIVE post_comment_score(id, root_id, post_id, parent_id, review, created_on, score) AS (
+	SELECT id, id, post_id, parent_id, review, created_on, score
+	FROM post_comment
+	WH
+)
+```
