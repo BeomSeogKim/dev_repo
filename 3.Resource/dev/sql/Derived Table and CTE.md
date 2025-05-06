@@ -40,3 +40,33 @@ FROM p_pc_r
 WHERE p_pc_r.ranking <= 2 
 ORDER BY post_id, comment_id
 ```
+
+### Recursive CTE
+- 점진적으로 여러번 반복하여 result set을 만들 수 있음
+- 계층적인 테이블 구조를 처리할 때 종종 사용되는 방식
+```java
+List<Map<String, Integer>> tuples = new ArrayList<>();
+
+for (int i = 0, sum = 0; i <= 5; i++) {
+	Map<String, Integer> tuples = new HashMap<>();
+
+	tuple.put("i",i);
+	tuple.put("consecutive_sum", sum += i);
+
+	tuples.add(tuple)
+}
+```
+
+```sql
+WITH RECURSIVE
+	sonecutive_number_sum (i, consecutive_sum)
+AS (
+	SELECT 0, 0
+	UNION ALL 
+	SELECT i + 1, (i + 1) + consecutive_sum
+	FROM consecutive_number_sum
+	WHERE i < 5
+)
+SELECT i, consecutive_sum
+FROM consecutive_number_sum
+```
