@@ -76,6 +76,26 @@ FROM consecutive_number_sum
 WITH RECURSIVE post_comment_score(id, root_id, post_id, parent_id, review, created_on, score) AS (
 	SELECT id, id, post_id, parent_id, review, created_on, score
 	FROM post_comment
-	WH
+	WHERE post_id = 1 AND parent_id IS NULL
+	UNION ALL 
+	SELECT pc.id, pcs.root_id, pc.post_id, pc.review, pc.created_on, pc.score
+	FROM post_comment pc
+	INNER JOIN post_comment_core pcs ON pc.parent_id = pcs.id
+),
+total_score_comment AS (
+	SELECT id, parent_id, review, created_on, score, SUM(score) OVER (PARTITION BY root_id) AS total_score
+	FROM post_commnet_score
+),
+total_score_ranking AS (
+	SELECT id, parent_id, review, created_on, score, total_score, DENSE_RANK() OVER (ORDER BY total_score DESC) AS ranking
+	FROM total_score_comment
 )
+SELECT id, parent_id, review, created_on, score, total_score
+FROM total_score_ranking
+WHERE ranking <= 3
+ORDER BY total_score DESC, id ASC
 ```
+
+Time of application-level processing vs database (hierarchical data)
+- 데이터가 적은 경우 : 시간이 거의 엇비슷
+- 데이터가 많은 경우 : database에서 처리하는 것이 시간이 더 빠르다.
