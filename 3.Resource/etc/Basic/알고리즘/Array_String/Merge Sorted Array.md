@@ -11,23 +11,21 @@
 
 ## 🚧 풀이 전략  
 1. 핵심 로직:
-    - ex) DFS 재귀 호출로 모든 경로 탐색
+    - 배열에 값을 적절하게 잘 넣고, 오름차순 정렬
 2. 시간 복잡도:
-    - O(N!)  
+    - O(NlogN)  
 3. 핵심 키워드:
-    - DFS, 백트래킹, 방문 배열, 순열
+    - 배열
 
 ---
 
-## 🔍 트러블슈팅
-- [] 조건문 빠뜨려서 무한루프 발생
-- [] visited 배열 초기화 위치 오류 → 전역 상태 공유 문제 발생
+## ✅ 최종 코드 (Python)
 
----
+```python
+class Solution(object):
+	def merge(self, nums1, m, nums2, n):
+		for i in range(n):
+			nums1[m + i] = nums2[i]
+		nums1.sort()
+```
 
-## ✅ 최종 코드 (Kotlin / Java)
-
-```kotlin
-fun solution() {
-    // ...
-}
