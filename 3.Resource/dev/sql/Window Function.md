@@ -34,4 +34,40 @@
 | LEAD( )       | 파티션 내에서 파라미터(N)을 이용해 N번째 이후 레코드 값 반환 |
 | NTH_VALUE( )  | 파티션의 n번째 값 반환                        |
 | NTILE         | 파티션별 전체 건수를 파라미터(N)로 N-등분한 값         |
-|               |                                      |
+
+### Range 관련 함수 
+
+Maximum Frame
+- 기본 값이며 전체 파티션을 참조
+- 각 행을 기준으로 현재 행까지 전체 누적 집계를 수행
+```sql
+ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+```
+
+Specific Frame
+- 프레임의 시작과 끝점을 명시적으로 지정하는 모드 
+- ROWS는 물리적 행 수, RANGE는 값의 차이를 기준으로 함
+```sql
+SUM(amount) OVER (
+	ORDER BY order_date
+	ROWS BETWEEN 2 PRECEDING AND 2 FOLLOWING
+)
+```
+
+Groups Mode
+- ORDER BY로 정렬된 값이 같은 행들을 하나의 그룹으로 간주하고, 해당 그룹 기준으로 프레임을 지정
+```sql
+SUM(score) OVER (
+	ORDER BY score
+	GROUPS BETWEEN 1 PRECEDING AND CURRENT ROW
+)
+```
+
+Range Mode
+- 정렬 기준 컬럼 값의 범위를 지정해 프레임을 구성 
+```sql
+SUM(amount) OVER (
+  ORDER BY transaction_date
+  RANGE BETWEEN INTERVAL '7' DAY PRECEDING AND CURRENT ROW
+)
+```
