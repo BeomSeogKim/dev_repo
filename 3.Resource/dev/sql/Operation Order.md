@@ -17,5 +17,13 @@ Operation Order
 	- WHERE 구문의 경우 먼저 선행 된 FROM 에서 정의된 alias만 참조해서 쓸 수 있음
 3. GROUP BY
 	- GROUP BY 구문의 규칙으로 응집시킬 수 있음
-	- SELECT 구문에서 aggregation function을 적용하는 것 곽 같음
+	- SELECT 구문에서 aggregation function을 적용하는 것 과 같음
+	- Stream Aggregate
+		- 정렬 기반 집계 방식
+		- 입력 데이터가 GROUP BY 키로 정렬되어있어야 함
+	- Hash Aggregate
+		- 해시 테이블을 이용해 GROUP BY 키로 데이터를 분류
+		- 정렬이 필요하지 않으며 순서에 상관없이 집계 가능
+4. HAVING
+	- 
 
