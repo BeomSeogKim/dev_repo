@@ -27,3 +27,4 @@ VALUES (
 
 PostgreSQL - ON CONFLICT
 - ON CONFLICT 구문에 INSERT 혹은 UPSERT 실행문을 포함시킬 수 있음
+- `DO NOTHING` 혹은 `DO UPDATE` 구문에 사용할 수 있따.
