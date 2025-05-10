@@ -28,4 +28,5 @@ Operation Order
 	- 두번째의 WHERE 구문처럼 작동함.
 	- GROUP BY가 WHERE 절 보다 먼저 실행되기에, result set에 대해서 필터를 할 수 없음
 	- HAVING에서 그런 역할을 수행
-
+5. Window Function
+	- 
