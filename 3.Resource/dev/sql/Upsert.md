@@ -24,3 +24,6 @@ VALUES (
 	"122-333213213"
 )
 ```
+
+PostgreSQL - ON CONFLICT
+- ON CONFLICT 구문에 INSERT 혹은 UPSERT 실행문을 포함시킬 수 있음
