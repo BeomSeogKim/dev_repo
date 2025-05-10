@@ -17,4 +17,5 @@ Operation Order
 	- WHERE 구문의 경우 먼저 선행 된 FROM 에서 정의된 alias만 참조해서 쓸 수 있음
 3. GROUP BY
 	- GROUP BY 구문의 규칙으로 응집시킬 수 있음
+	- SELECT 구문에서 aggregation function을 적용하는 것 곽 같음
 
