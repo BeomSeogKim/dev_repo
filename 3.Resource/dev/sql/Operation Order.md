@@ -25,5 +25,7 @@ Operation Order
 		- 해시 테이블을 이용해 GROUP BY 키로 데이터를 분류
 		- 정렬이 필요하지 않으며 순서에 상관없이 집계 가능
 4. HAVING
-	- 
+	- 두번째의 WHERE 구문처럼 작동함.
+	- GROUP BY가 WHERE 절 보다 먼저 실행되기에, result set에 대해서 필터를 할 수 없음
+	- HAVING에서 그런 역할을 수행
 
