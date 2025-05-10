@@ -29,4 +29,19 @@ Operation Order
 	- GROUP BY가 WHERE 절 보다 먼저 실행되기에, result set에 대해서 필터를 할 수 없음
 	- HAVING에서 그런 역할을 수행
 5. Window Function
-	- 
+	- Having 없이 행 파티션에 걸쳐 집계 함수를 적용하여 파티션 행을 단일 레코드로 줄일 수 있음
+6. SELECT
+	- 마지막 result set에서 필요한 데이터 프로젝션을 정의하는 것
+7. DISTINCT
+	- 많은 데이터베이스들이 두가지 단계를 통해서 실행됨
+	- 1. result set 정렬
+	- 2. 순회를 하면서 중복된 값들을 제거
+8. UNION UNION ALL
+	- 두개의 쿼리 결과들을 합쳐주는 역할을 함
+	- UNION : 중복 제거 없이 합쳐줌
+	- UNION ALL : 중복 제거
+9. ORDER BY 
+	- 결과를 정렬하는 순서를 명시하는 구문
+	- ASC / DESC 둘다 가능
+10. OFFSET
+11. LIMIT, FETCH ROWS, TOP
