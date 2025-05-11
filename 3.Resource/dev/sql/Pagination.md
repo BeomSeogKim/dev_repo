@@ -11,7 +11,22 @@ LIMIT 10 OFFSET 100;
 
 #### Seek / Keyset Pagination 
 ```sql 
+-- created_at과 id 값을 기준으로 다음 페이지 조회
 SELECT *
 FROM items
-WHERE (created_at < :last_created)
+WHERE (created_at < :last_created_at)
+ORDER BY created_at DESC
+LIMIT 10;
 ```
+
+```sql
+SELECT * FROM items
+WHERE (created_at < :last_created_at)
+	OR (created_at = :last_created_at AND id < :last_id)
+ORDER BY created_at DESC, id DESC
+LIMIT 10;
+```
+- 페이지가 깊어져도 성능 유지 (인덱스를 활용한 Range Scan)
+- 데이터 변경에 강건함
+- 특정 페이지로 바로 이동은 불가능 
+- 데이터의 양이 많고 페이지 수가 많을 때 유용함
