@@ -5,5 +5,5 @@
 !.gitignore
 
 # # Resource 폴더만 포함
-!3.Resource/
-!3.Resource/**
+!3.Resource/dev
+!3.Resource/dev/**
