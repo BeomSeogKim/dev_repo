@@ -4,6 +4,8 @@
 # .gitignore 파일 자체는 Git에 포함
 !.gitignore
 
-# # Resource 폴더만 포함
-!3.Resource/dev
+# 3.Resource/dev 하위 디렉토리만 추적
+!3.Resource/
+3.Resource/*
+!3.Resource/dev/
 !3.Resource/dev/**
